@@ -121,7 +121,8 @@ func Autobuild(files []string) {
 	args := []string{"build"}
 	args = append(args, "-o", cfg.Output)
 	if cfg.BuildTags != "" {
-		args = append(args, "-tags", cfg.BuildTags)
+		//args = append(args, "-tags", cfg.BuildTags)
+		args = append(args, "-tags", strings.ReplaceAll(cfg.BuildTags, "{fdate}", time.Now().Format("2006-01-02 15:04:05")))
 	}
 	args = append(args, files...)
 
